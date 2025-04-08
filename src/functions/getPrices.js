@@ -1,5 +1,7 @@
 import axios from "axios";
 
+const apiKey = process.env.REACT_APP_COINGECKO_API_KEY;
+
 export const getPrices = (id, days, priceType, setError) => {
   const prices = axios
     .get(

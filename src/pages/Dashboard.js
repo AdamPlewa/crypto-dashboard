@@ -16,6 +16,8 @@ function Dashboard() {
   const [page, setPage] = useState(1);
   const [paginatedCoins, setPaginatedCoins] = useState([]);
 
+  const apiKey = process.env.REACT_APP_COINGECKO_API_KEY;
+
   useEffect(() => {
     // Get 100 Coins
     getData();
@@ -25,7 +27,12 @@ function Dashboard() {
     setLoading(true);
     axios
       .get(
-        "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false"
+        "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false",
+        {
+          headers: {
+            "x-cg-demo-api-key": apiKey,
+          },
+        }
       )
       .then((response) => {
         console.log("RESPONSE>>>", response.data);
