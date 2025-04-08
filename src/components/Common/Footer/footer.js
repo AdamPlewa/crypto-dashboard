@@ -19,9 +19,6 @@ function Footer() {
         <a href="https://facebook.com">
           <FacebookIcon className="social-link" />
         </a>
-        <a href="mailto:avivashishta@gmail.com">
-          <EmailIcon className="social-link" />
-        </a>
         <a href="https://www.twitter.com">
           <TwitterIcon className="social-link" />
         </a>
