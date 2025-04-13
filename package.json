@@ -2,6 +2,7 @@
   "name": "crypto-jan",
   "version": "0.1.0",
   "private": true,
+  "proxy": "https://api.coingecko.com",
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
