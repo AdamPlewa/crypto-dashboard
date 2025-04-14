@@ -54,9 +54,6 @@ export default function TemporaryDrawer() {
           <a href="/watchlist">
             <p className="link">Watchlist</p>
           </a>
-          <a href="/dashboard">
-            <p className="link">Dashboard</p>
-          </a>
           <Switch checked={darkMode} onClick={() => changeMode()} />
         </div>
       </Drawer>
