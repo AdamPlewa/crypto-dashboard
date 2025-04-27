@@ -12,7 +12,7 @@
 
 [data-theme="dark"] {
   --white: #ffffff;
-  --black: #111;
+  --DarkBlue: #01112b;
   --grey: #888;
   --darkgrey: #1b1b1b;
 }
@@ -33,7 +33,7 @@ body {
   font-family: "Inter", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--black);
+  background-color: var(--DarkBlue);
 
   overflow-x: hidden;
 }
