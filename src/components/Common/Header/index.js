@@ -22,7 +22,7 @@ function Header() {
 			setLight()
 		}
 		setDarkMode(!darkMode)
-		toast.success('Theme Changed!')
+		// toast.success('Theme Changed!')
 	}
 
 	const setDark = () => {

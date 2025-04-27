@@ -9,7 +9,7 @@
 
 .list-flex {
   width: 90%;
-  display: block;
+  /* display: block; */
   margin-left: auto;
   margin-right: auto;
 }
@@ -17,5 +17,93 @@
 @media only screen and (max-width: 600px) {
   .list-flex {
     width: 100%;
+  }
+}
+
+.list-header {
+  display: flex;              
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  margin: 0 0 0 2rem;
+  padding: 1rem 2rem;
+  border-bottom: 2px solid var(--grey);
+  font-weight: 600;
+  color: var(--white);
+}
+
+.list-header th {
+  flex: 1;                    
+  text-align: left;
+}
+
+.list-header th.td-info {
+  flex: 0 0 16%; 
+  padding-left: 2%;          
+}
+
+.list-header th.td-current-price {
+  flex: 0 0 20%;
+  text-align: right;
+}
+
+.list-header th.td-totalVolume
+{
+  flex: 0 0 23%;
+  text-align: right;
+}
+.list-header th.td-marketCap {
+  flex: 0 0 21%;
+  text-align: right;
+}
+
+.list-header th.mobile {
+  display: none;
+}
+
+@media only screen and (max-width: 900px) {
+  .list-header th.td-marketCap {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .list-header th.mobile {
+    display: block;
+    text-align: left;
+  }
+  .list-header th.td-totalVolume {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .list-header th.td-marketCap {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .list-header {
+    padding: 0.5rem 1rem;   
+  }
+  .list-header th.td-totalVolume {
+    display: none;          
+  }
+  .list-header th.mobile {
+    display: block;         
+    text-align: left;
+    flex: 0 0 auto;
+  }
+
+  .list-header th.td-info {
+    flex: 0 0 25%;
+    padding-left: 0.5rem;
+  }
+  .list-header th.td-current-price {
+    flex: 0 0 25%;
+  }
+  .list-header th.td-marketCap {
+    display: none;
   }
 }

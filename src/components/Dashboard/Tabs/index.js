@@ -18,7 +18,7 @@ export default function TabsComponent({ coins, setSearch }) {
   const style = {
     color: "var(--white)",
     "& .Mui-selected": {
-      color: "var(--blue) !important",
+      color: "var(--white) !important",
     },
     fontFamily: "Inter,sans-serif",
     fontWeight: 600,
@@ -27,13 +27,24 @@ export default function TabsComponent({ coins, setSearch }) {
 
   return (
     <TabContext value={value}>
-      <div style={{ borderBottom: 1, borderColor: "divider" }}>
+      {/* <div style={{ borderBottom: 1, borderColor: "divider" }}>
         <TabList onChange={handleChange} variant="fullWidth">
           <Tab label="# Name Price 24h % Price Market Cap Volume(24h)" value="list" sx={style} />
         </TabList>
-      </div>
+      </div> */}
       <TabPanel value="list">
         <table className="list-flex">
+          <thead>
+            <tr className="list-header">
+              <th /> 
+              <th className="td-info">Name</th>
+              <th>24h %</th>
+              <th className="td-current-price">Price</th>
+              <th className="td-totalVolume">Volume(24h)</th>
+              <th className="td-marketCap">Market Cap</th>
+              <th />                              
+            </tr>
+          </thead>
           {coins.length > 0 ? (
             coins.map((coin, i) => (
               <List coin={coin} key={i} delay={(i % 8) * 0.2} />
