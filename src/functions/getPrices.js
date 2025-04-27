@@ -5,7 +5,7 @@ const apiKey = process.env.REACT_APP_COINGECKO_API_KEY;
 export const getPrices = (id, days, priceType, setError) => {
   const prices = axios
     .get(
-      `/api/v3/coins/${id}/market_chart?vs_currency=usd&days=${days}&interval=daily`
+      `https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=${days}&interval=daily`
     )
     .then((response) => {
       if (response.data) {
