@@ -6,10 +6,10 @@
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
-  background-color: var(--darkgrey);
+  background-color: var(--darkgray);
   border: 2px solid var(--blue);
   font-size: 2rem;
-  bottom: 1rem;
+  bottom: 8rem;
   right: 1rem;
   z-index: 1000;
   cursor: pointer;
@@ -17,7 +17,7 @@
 }
 
 .grey-wrapper {
-  background-color: var(--darkgrey);
+  background-color: var(--darkgray);
   padding: 1rem;
   padding-bottom: 0.5rem;
   border-radius: 1rem;

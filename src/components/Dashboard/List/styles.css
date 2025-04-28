@@ -12,7 +12,7 @@
 }
 
 .list-row:hover {
-  background-color: var(--darkgrey);
+  background-color: var(--darkgray);
   transition: all 0.3s;
 }
 
@@ -50,7 +50,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px solid var(--green);
   border-radius: 50%;
   color: var(--green);
   padding: 0.5rem;
@@ -59,7 +58,6 @@
 }
 
 .watchlist-icon-red {
-  border: 2px solid var(--red);
   color: var(--red);
 }
 
@@ -87,11 +85,10 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  gap: 0.75rem;
 }
 
 .price-chip {
-  border: 2px solid var(--green);
+  text-align: right;
   border-radius: 2rem;
   padding: 0.25rem 1rem;
   font-weight: 600;
@@ -106,7 +103,6 @@
 }
 
 .chip-icon {
-  border: 2px solid var(--green);
   padding: 0.2rem;
   display: flex;
   justify-content: center;
@@ -116,7 +112,6 @@
 }
 
 .red {
-  border: 2px solid var(--red) !important;
   color: var(--red);
 }
 

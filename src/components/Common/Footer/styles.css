@@ -2,22 +2,18 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
-  margin: 3rem;
-  height: auto;
-  border-radius: 0.75rem;
-  background: linear-gradient(
-    90deg,
-    rgba(2, 0, 36, 1) 0%,
-    rgba(31, 83, 198, 1) 0%,
-    rgba(0, 212, 255, 1) 100%
-  );
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
+  padding: 2rem;
+  margin: 0;
+  background-color: var(--darkgray); 
+  color: var(--white);
+  position: relative;
+  bottom: 0;
+  left: 0;
 }
 
 .footer h2 {
   cursor: pointer;
+  margin: 0;
 }
 
 .social-links {

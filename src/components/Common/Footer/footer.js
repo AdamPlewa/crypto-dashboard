@@ -11,10 +11,10 @@ function Footer() {
     document.documentElement.scrollTop = 0;
   }
   return (
-    <div className="footer">
-      <h2 className="logo" onClick={() => topFunction()}>
-        CoinHub
-      </h2>
+    <footer  className="footer">
+      <p className="footer-copyright">
+        © 2025 IGI INC. All rights reserved.
+      </p>
       <div className="social-links">
         <a href="https://facebook.com">
           <FacebookIcon className="social-link" />
@@ -26,7 +26,7 @@ function Footer() {
           <InstagramIcon className="social-link" />
         </a>
       </div>
-    </div>
+    </footer>
   );
 }
 

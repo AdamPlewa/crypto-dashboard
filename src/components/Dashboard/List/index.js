@@ -42,7 +42,7 @@ function List({ coin, delay }) {
             <td>
               <div className="chip-flex">
                 <div className="price-chip">
-                  {coin.price_change_percentage_24h.toFixed(2)}%
+                  +{coin.price_change_percentage_24h.toFixed(2)}%
                 </div>
                 <div className="chip-icon td-chip-icon">
                   <TrendingUpRoundedIcon />
