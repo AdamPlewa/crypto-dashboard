@@ -8,7 +8,8 @@ import Watchlist from './pages/Watchlist'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { useEffect } from 'react'
-
+import Login from './Login'
+import Profile from "./Profile";
 function App() {
 	const theme = createTheme({
 		palette: {
@@ -66,6 +67,8 @@ function App() {
 						<Route path='/coin/:id' element={<Coin />} />
 						<Route path='/compare' element={<Compare />} />
 						<Route path='/watchlist' element={<Watchlist />} />
+						<Route path="/login" element={<Login />} />
+						<Route path="/profile" element={<Profile />} />
 					</Routes>
 				</BrowserRouter>
 			</ThemeProvider>
