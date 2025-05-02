@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { createUserWithEmailAndPassword } from 'firebase/auth'
+import { createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from 'firebase/auth'
 import { auth } from './firebase'
 import { useNavigate, Link } from 'react-router-dom'
 import Header from '../src/components/Common/Header/index'
@@ -22,6 +22,16 @@ const Register = () => {
 			navigate('/profile')
 		} catch (error) {
 			alert('❌ Błąd rejestracji: ' + error.message)
+		}
+	}
+
+	const handleGoogleRegister = async () => {
+		const provider = new GoogleAuthProvider()
+		try {
+			await signInWithPopup(auth, provider)
+			navigate('/profile')
+		} catch (error) {
+			alert('❌ Błąd rejestracji przez Google: ' + error.message)
 		}
 	}
 
@@ -51,7 +61,14 @@ const Register = () => {
 					<br />
 					<button type='submit'>Zarejestruj się</button>
 				</form>
-                
+
+				<button onClick={handleGoogleRegister} style={{ marginTop: '10px' }}>
+					Zarejestruj się przez Google
+				</button>
+
+				<p>
+					Masz już konto? <Link to='/login'>Zaloguj się</Link>
+				</p>
 			</div>
 		</>
 	)

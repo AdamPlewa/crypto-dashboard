@@ -1,7 +1,8 @@
 // src/Login.js
 import React, { useState } from 'react'
 import { auth } from './firebase'
-import { signInWithEmailAndPassword } from 'firebase/auth'
+import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from 'firebase/auth'
+
 import { useNavigate, Link } from 'react-router-dom'
 import Header from '../src/components/Common/Header/index' // Importuj Header
 
@@ -20,9 +21,19 @@ const Login = () => {
 		}
 	}
 
+	const handleGoogleLogin = async () => {
+		const provider = new GoogleAuthProvider()
+		try {
+			await signInWithPopup(auth, provider)
+			navigate('/profile')
+		} catch (error) {
+			alert('❌ Błąd logowania przez Google: ' + error.message)
+		}
+	}
+
 	return (
 		<div>
-			<Header /> {/* Dodaj Header tutaj */}
+			<Header />
 			<h2>Logowanie</h2>
 			<form onSubmit={handleLogin}>
 				<input type='email' placeholder='Email' value={email} onChange={e => setEmail(e.target.value)} />
@@ -31,6 +42,11 @@ const Login = () => {
 				<br />
 				<button type='submit'>Zaloguj się</button>
 			</form>
+
+			<button onClick={handleGoogleLogin} style={{ marginTop: '10px' }}>
+				Zaloguj przez Google
+			</button>
+
 			<p>
 				Nie masz konta? <Link to='/Register'>Zarejestruj się</Link>
 			</p>
