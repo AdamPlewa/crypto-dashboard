@@ -8,6 +8,9 @@ import Watchlist from './pages/Watchlist'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { useEffect } from 'react'
+import Login from './Login'
+import Profile from './Profile'
+import Register from './Register'
 
 function App() {
 	const theme = createTheme({
@@ -66,6 +69,9 @@ function App() {
 						<Route path='/coin/:id' element={<Coin />} />
 						<Route path='/compare' element={<Compare />} />
 						<Route path='/watchlist' element={<Watchlist />} />
+						<Route path='/login' element={<Login />} />
+						<Route path='/profile' element={<Profile />} />
+						<Route path='/register' element={<Register />} />
 					</Routes>
 				</BrowserRouter>
 			</ThemeProvider>

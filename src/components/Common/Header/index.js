@@ -4,16 +4,28 @@ import './styles.css'
 import Switch from '@mui/material/Switch'
 import { toast } from 'react-toastify'
 
+import { Link } from "react-router-dom";
+import { onAuthStateChanged, signOut } from "firebase/auth";
+import { auth } from "../../../firebase";
+
+
 function Header() {
 	const [darkMode, setDarkMode] = useState(localStorage.getItem('theme') == 'dark' ? true : false)
+  const [user, setUser] = useState(null);
+  const [isLoginPage, setIsLoginPage] = useState(false);
 
-	useEffect(() => {
-		if (localStorage.getItem('theme') == 'dark') {
-			setDark()
-		} else {
-			setLight()
-		}
-	}, [])
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, setUser); 
+
+    setIsLoginPage(window.location.pathname === "/login");
+
+    if (localStorage.getItem('theme') === 'dark') {
+      setDark();
+    } else {
+      setLight();
+    }
+    return () => unsubscribe(); 
+  }, []);
 
 	const changeMode = () => {
 		if (localStorage.getItem('theme') != 'dark') {
@@ -35,27 +47,45 @@ function Header() {
 		document.documentElement.setAttribute('data-theme', 'light')
 	}
 
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+    } catch (error) {
+      console.error("Błąd przy wylogowywaniu: ", error.message);
+    }
+  };
+
   return (
     <div className="header">
       <div className="header-left">
-        <h1>
-          CoinHub
-        </h1>
+        <h1>CoinHub</h1>
         <div className="links">
-          <a href="/">
+          <Link to="/">
             <p className="link">Home</p>
-          </a>
-          <a href="/compare">
+          </Link>
+          <Link to="/compare">
             <p className="link">Compare</p>
-          </a>
-          <a href="/watchlist">
+          </Link>
+          <Link to="/watchlist">
             <p className="link">Watchlist</p>
-          </a>
+          </Link>
         </div>
       </div>
       <div className="header-right">
-        <Switch checked={darkMode} onClick={() => changeMode()} />
-        <button className="login-button">Login</button>
+        <Switch checked={darkMode} onClick={changeMode} />
+
+        {/* Show Login button only if user is not logged in and not on the login page */}
+        {!user && !isLoginPage && (
+          <Link to="/login">
+            <button className="login-button">Login</button>
+          </Link>
+        )}
+        {user && (
+          <Link to="/profile">
+            <button className="login-button">Profile</button>
+          </Link>
+        )}
+
         <div className="drawer-component">
           <TemporaryDrawer />
         </div>
@@ -64,4 +94,4 @@ function Header() {
   );
 }
 
-export default Header
+export default Header;
