@@ -8,9 +8,9 @@ import Watchlist from './pages/Watchlist'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { useEffect } from 'react'
-import Login from './Login'
-import Profile from './Profile'
-import Register from './Register'
+import Login from './components/LoginPage/Login/Login'
+import Profile from './components/LoginPage/Profile/Profile'
+import Register from './components/LoginPage/Register/Register'
 
 function App() {
 	const theme = createTheme({

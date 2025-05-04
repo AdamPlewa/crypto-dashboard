@@ -1,7 +1,7 @@
 // src/Profile.js
 import React from 'react'
-import { auth } from './firebase'
-import Header from '../src/components/Common/Header/index'
+import { auth } from '../../../firebase'
+import Header from '../../Common/Header/index'
 import { useNavigate } from 'react-router-dom'
 
 const Profile = () => {
