@@ -8,6 +8,34 @@ import Header from '../../Common/Header/index' // Importuj Header
 import './Login.css' // Importuj style CSS
 import { FcGoogle } from 'react-icons/fc'
 
+// src/utils/firebaseErrors.js
+
+export const getErrorMessage = (errorCode) => {
+	switch (errorCode) {
+		case 'auth/invalid-email':
+			return 'Invalid email address.'
+		case 'auth/missing-password':
+			return 'Password is required.'
+		case 'auth/email-already-in-use':
+			return 'This email address is already in use.'
+		case 'auth/weak-password':
+			return 'Password is too weak. It should be at least 6 characters.'
+		case 'auth/user-disabled':
+			return 'This account has been disabled.'
+		case 'auth/user-not-found':
+			return 'No user found with this email address.'
+		case 'auth/wrong-password':
+			return 'Incorrect password.'
+		case 'auth/invalid-credential':
+			return 'Invalid login credentials.'
+		case 'auth/popup-closed-by-user':
+			return 'Login window was closed before completing the sign-in.'
+		case 'auth/network-request-failed':
+			return 'Network error. Please check your internet connection.'
+		default:
+			return 'An unknown error occurred. Please try again.'
+	}
+}
 
 const Login = () => {
 	const [email, setEmail] = useState('')
@@ -20,9 +48,9 @@ const Login = () => {
 		e.preventDefault()
 		try {
 			await signInWithEmailAndPassword(auth, email, password)
-			navigate('/profile') // Po zalogowaniu przenosi na stronę profilu
+			navigate('/profile')
 		} catch (error) {
-			setError('❌ Błąd logowania: ' + error.message)
+			setError('❌ ' + getErrorMessage(error.code))
 		}
 	}
 
@@ -32,7 +60,7 @@ const Login = () => {
 			await signInWithPopup(auth, provider)
 			navigate('/profile')
 		} catch (error) {
-			setError('❌ Błąd logowania: ' + error.message)
+			setError('❌ ' + getErrorMessage(error.code))
 		}
 	}
 
@@ -41,7 +69,7 @@ const Login = () => {
 			<Header />
 			<div className="auth-container">
 				<div className="auth-box">
-					<h2>Logowanie</h2>
+					<h2>Welcome to CoinHub</h2>
 					<form onSubmit={handleLogin} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
 						<input
 							type="email"
@@ -51,22 +79,22 @@ const Login = () => {
 						/>
 						<input
 							type="password"
-							placeholder="Hasło"
+							placeholder="Password"
 							value={password}
 							onChange={e => setPassword(e.target.value)}
 						/>
-						<button type="submit">Zaloguj się</button>
+						<button type="submit">Login</button>
 					</form>
 
 					<button onClick={handleGoogleLogin} className="google-btn">
 						<FcGoogle className="google-btn-icon" size={22} style={{ marginRight: '8px' }} />
-						Zaloguj przez Google
+						Continue with Google
 					</button>
 
 					{error && <p className="error-message">{error}</p>}
 
 					<p>
-						Nie masz konta? <Link to="/Register">Zarejestruj się</Link>
+						Don't have an account? <Link to="/Register">Sign up</Link>					
 					</p>
 				</div>
 			</div>

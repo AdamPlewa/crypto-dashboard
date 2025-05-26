@@ -11,6 +11,9 @@ import { useEffect } from 'react'
 import Login from './components/LoginPage/Login/Login'
 import Profile from './components/LoginPage/Profile/Profile'
 import Register from './components/LoginPage/Register/Register'
+import Subscription from './pages/Subscription'
+import ThankYou from './pages/ThankYou'
+import PaymentFailed from './pages/PaymentFailed'
 
 function App() {
 	const theme = createTheme({
@@ -72,6 +75,9 @@ function App() {
 						<Route path='/login' element={<Login />} />
 						<Route path='/profile' element={<Profile />} />
 						<Route path='/register' element={<Register />} />
+						<Route path='/subscription' element={<Subscription />} />
+						<Route path='/thank-you' element={<ThankYou />} />
+						<Route path='/payment-failed' element={<PaymentFailed />} />
 					</Routes>
 				</BrowserRouter>
 			</ThemeProvider>
