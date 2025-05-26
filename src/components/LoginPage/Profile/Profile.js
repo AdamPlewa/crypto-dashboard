@@ -82,16 +82,14 @@ const Profile = () => {
     };
 
     const getAccountType = () => {
-        if (!subscription) return <span className="account-type free">Free</span>;
-        const isActive = subscription.expiresAt > Date.now();
-        if (isActive) {
-            return (
-                <span className="account-type paid">
-                    {subscription.type.charAt(0).toUpperCase() + subscription.type.slice(1)} (do {new Date(subscription.expiresAt).toLocaleDateString()})
-                </span>
-            );
+        if (!subscription || !subscription.expiresAt || subscription.expiresAt < Date.now()) {
+            return <span className="account-type free">Free</span>;
         }
-        return <span className="account-type free">Free</span>;
+        return (
+            <span className="account-type paid">
+                {subscription.type.charAt(0).toUpperCase() + subscription.type.slice(1)} (until {new Date(subscription.expiresAt).toLocaleString()})
+            </span>
+        );
     };
 
     return (

@@ -14,6 +14,7 @@ import Register from './components/LoginPage/Register/Register'
 import Subscription from './pages/Subscription'
 import ThankYou from './pages/ThankYou'
 import PaymentFailed from './pages/PaymentFailed'
+import Contact from './pages/Contact'
 
 function App() {
 	const theme = createTheme({
@@ -78,6 +79,7 @@ function App() {
 						<Route path='/subscription' element={<Subscription />} />
 						<Route path='/thank-you' element={<ThankYou />} />
 						<Route path='/payment-failed' element={<PaymentFailed />} />
+						<Route path='/contact' element={<Contact />} />
 					</Routes>
 				</BrowserRouter>
 			</ThemeProvider>

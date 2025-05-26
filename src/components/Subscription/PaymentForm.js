@@ -14,13 +14,13 @@ function PaymentForm({ plan, onCancel }) {
 
   return (
     <form onSubmit={handleSubmit} className="payment-form">
-      <h3>Płatność za: {plan.name}</h3>
+      <h3>Payment for: {plan.name}</h3>
       <div style={{ marginTop: '1rem' }}>
         <button className="primary-btn" type="submit">
-          Zapłać {plan.price} zł
+          Pay {plan.price} zł
         </button>
         <button type="button" onClick={onCancel} className="primary-btn" style={{ marginLeft: '1rem' }}>
-          Anuluj
+          Cancel
         </button>
       </div>
     </form>
