@@ -4,9 +4,9 @@ import { initializeApp } from 'firebase/app'
 
 import { getAnalytics } from 'firebase/analytics'
 
-import { getAuth } from 'firebase/auth'
+import { getAuth, GoogleAuthProvider } from 'firebase/auth'
 
-import { GoogleAuthProvider } from 'firebase/auth'
+import { getFirestore } from 'firebase/firestore' // DODAJ TO
 
 // TODO: Add SDKs for Firebase products that you want to use
 
@@ -31,6 +31,8 @@ const analytics = getAnalytics(app)
 
 const auth = getAuth(app)
 
-export { app, auth }
+const db = getFirestore(app) // DODAJ TO
+
+export { app, auth, db } // DODAJ db
 
 export const provider = new GoogleAuthProvider()

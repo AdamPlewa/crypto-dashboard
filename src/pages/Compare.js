@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { auth, db } from "../firebase";
+import { doc, getDoc } from "firebase/firestore";
 import Info from "../components/CoinPage/Info";
 import LineChart from "../components/CoinPage/LineChart";
 import ToggleComponents from "../components/CoinPage/ToggleComponent";
@@ -28,6 +30,29 @@ function Compare() {
     labels: [],
     datasets: [],
   });
+  const [subscription, setSubscription] = useState(null);
+  const [checkingAccess, setCheckingAccess] = useState(true);
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((firebaseUser) => {
+      setUser(firebaseUser);
+    });
+    return () => unsubscribe();
+  }, []);
+
+  useEffect(() => {
+    const fetchSubscription = async () => {
+      if (auth.currentUser) {
+        const userDoc = await getDoc(doc(db, "users", auth.currentUser.uid));
+        if (userDoc.exists()) {
+          setSubscription(userDoc.data().subscription || null);
+        }
+      }
+      setCheckingAccess(false);
+    };
+    fetchSubscription();
+  }, []);
 
   useEffect(() => {
     getData();
@@ -99,6 +124,54 @@ function Compare() {
     settingChartData(setChartData, prices1, prices2);
     setLoading(false);
   };
+
+  // Sprawdź dostęp
+  const hasPremium =
+    subscription &&
+    subscription.type === "premium" &&
+    subscription.expiresAt > Date.now();
+
+  if (checkingAccess) {
+    return (
+      <div>
+        <Header />
+        <Loader />
+      </div>
+    );
+  }
+
+  if (!user) {
+    return (
+      <div>
+        <Header />
+        <div className="grey-wrapper" style={{ textAlign: "center", padding: "4rem 0" }}>
+          <h2>No Access</h2>
+          <p>
+            You must be logged in to access the Compare feature.
+          </p>
+        </div>
+      </div>
+    );
+  }
+
+  if (
+    !subscription ||
+    subscription.type !== "premium" ||
+    subscription.expiresAt < Date.now()
+  ) {
+    return (
+      <div>
+        <Header />
+        <div className="grey-wrapper" style={{ textAlign: "center", padding: "4rem 0" }}>
+          <h2>No Access</h2>
+          <p>
+            This feature is available only with a <b>Premium subscription</b>.<br />
+            Please upgrade your account to access the Compare page.
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div>

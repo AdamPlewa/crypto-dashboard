@@ -69,6 +69,12 @@ function Header() {
           <Link to="/watchlist">
             <p className="link">Watchlist</p>
           </Link>
+          <Link to="/subscription">
+            <p className="link">Subscription</p>
+          </Link>
+          <Link to="/contact">
+            <p className="link">Contact</p>
+          </Link>
         </div>
       </div>
       <div className="header-right">

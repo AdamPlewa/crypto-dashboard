@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;500;600;700&display=swap');
 
+/* Jasny motyw */
 :root {
 	--white: #e3edfc;
 	--black: #01112b;
@@ -8,6 +9,11 @@
 	--darkgray: #000a1a;
 	--green: #61c96f;
 	--red: #f94141;
+	--card-bg: #fff;
+	--text-color: #222;
+	--border-color: #e0e0e0;
+	--primary: #007bff;
+	--primary-dark: #0056b3;
 }
 
 [data-theme='dark'] {
@@ -16,6 +22,11 @@
 	--grey: #888;
 	--darkgray: #000a1a;
 	--navblack: #021838;
+	--card-bg: #151d29;
+	--text-color: #f3f6fa;
+	--border-color: #222f3e;
+	--primary: #2196f3;
+	--primary-dark: #1565c0;
 }
 
 [data-theme='light'] {
